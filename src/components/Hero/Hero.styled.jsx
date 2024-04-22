@@ -21,12 +21,19 @@ export const ImgWrap = styled.div`
 `;
 
 export const HeroTitle = styled.h1`
-  font-size: 34px;
+  font-size: 14px;
   line-height: 1.9;
   max-width: 100%;
   color: var(--white);
 
   @media screen and (min-width: 768px) {
     max-width: 800px;
+    font-size: 24px;
+  }
+  @media screen and (min-width: 1440px) {
+  font-size: 34px;
+  line-height: 1.9;
+  max-width: 100%;
+  color: var(--white);
   }
 `;

@@ -49,6 +49,18 @@ export const PicturePositionWrap = styled.div`
 `;
 
 export const TextBlock = styled.div`
+@media screen and (min-width: 768px) {
+  left: -500px;
+  width: 400px;
+  div {
+    position: sticky;
+    z-index: 4;
+    top: 110px;
+    left: 400px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
   position: relative;
   z-index: 4;
   left: -600px;
@@ -74,4 +86,5 @@ export const TextBlock = styled.div`
     top: 110px;
     left: 400px;
   }
-`;
+}
+`
