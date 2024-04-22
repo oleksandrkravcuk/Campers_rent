@@ -1,29 +1,41 @@
-import {
-  HeaderContainer,
-  Navigation,
-  StyledLink,
-  IconWrapper,
-} from './Header.styled';
-import sprite from 'assets/sprite.svg';
+import { useSelector } from "react-redux";
+import { selectFavorites } from "../../redux/adverts/selectors";
+import MainContainer from "../../layouts/MainContainer";
+import FavIcon from "../../components/icons/FavIcon";
+import { HeaderBlock, Nav, NavigLink } from "./Header.styled";
+import ButtonWra from "../../components/ToggleThemeBtn/ToggleThemeBtn";
+import { SlHome } from "react-icons/sl";
 
-export const Header = () => {
+const Header = () => {
+  const favorites = useSelector(selectFavorites);
 
   return (
-    <HeaderContainer>
-      <Navigation>
-        <StyledLink to="/first">
-          <IconWrapper>
-            <use href={`${sprite}#icon-logo`} />
-          </IconWrapper>
-          First
-        </StyledLink>
-        <StyledLink to="/second">
-          <IconWrapper>
-            <use href={`${sprite}#icon-logo`} />
-          </IconWrapper>
-          Second
-        </StyledLink>
-      </Navigation>
-    </HeaderContainer>
+    <HeaderBlock>
+      <MainContainer>
+        <Nav>
+          <ul>
+            <li>
+              <NavigLink to="/">
+              <SlHome/>
+              </NavigLink>
+            </li>
+            <li>
+              <NavigLink to="/catalog">Catalog</NavigLink>
+            </li>
+            <li>
+            <ButtonWra></ButtonWra>
+            </li>
+            <li>
+              <NavigLink id="favs" to="/favorites">
+                {favorites.length > 0 && <div>{favorites.length}</div>}
+                <FavIcon width={30} height={30} />
+              </NavigLink>
+            </li>
+          </ul>
+        </Nav>
+      </MainContainer>
+    </HeaderBlock>
   );
 };
+
+export default Header;
