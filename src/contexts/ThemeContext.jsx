@@ -13,7 +13,10 @@ const ThemeProvider = ({ children }) => {
   }, [theme]);
 
   const toggleTheme = () => {
-    setTheme(theme === "light" ? "dark" : "light");
+    setTheme((prevTheme) => ({
+      ...prevTheme,
+      mode: prevTheme.mode === "light" ? "dark" : "light",
+    }));
   };
 
   return (
