@@ -3,9 +3,10 @@ import { createContext, useEffect, useState } from "react";
 const ThemeContext = createContext();
 
 const ThemeProvider = ({ children }) => {
-  const [theme, setTheme] = useState(
-    () => JSON.parse(localStorage.getItem("theme")) ?? "light"
-  );
+  const [theme, setTheme] = useState(() => {
+    const storedTheme = localStorage.getItem("theme");
+    return storedTheme ? JSON.parse(storedTheme) : { mode: "light" };
+  });
 
   useEffect(() => {
     localStorage.setItem("theme", JSON.stringify(theme));
